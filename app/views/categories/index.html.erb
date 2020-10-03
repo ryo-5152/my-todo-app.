@@ -1,0 +1,25 @@
+<h1>新規カテゴリ</h1>
+<%= form_for(@category) do |f| %>
+  <div><%= f.label :title %></div>
+  <div><%= f.text_field :title %></div>
+  <div><%= f.submit %></div>
+<% end %>
+
+
+<h1>カテゴリ一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>カテゴリ名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.title %></td>
+        <td><%= link_to '編集', edit_category_path(category) %></td>
+        <td><%= link_to '削除', category_path(category), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
