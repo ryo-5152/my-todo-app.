@@ -28,7 +28,7 @@ class TodosController < ApplicationController
    
    def destroy
       @category = Category.find_by(params[:id])
-      @todo =@category.todos.find_by(id: params[:id])
+      @todo =@category.todos.find_by(params[:id])
       
        @todo.destroy
        redirect_to @category
