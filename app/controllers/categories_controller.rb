@@ -2,6 +2,16 @@ class CategoriesController < ApplicationController
   def index
     @category = Category.new
     @categories = Category.all
+    @todo = @category.todos.build
+  end
+  
+  def show
+  
+    
+    @category = Category.find(params[:id])
+    @todo = @category.todos.build
+    @todos = @category.todos.all
+    
   end
 
   def new
@@ -15,6 +25,7 @@ class CategoriesController < ApplicationController
 
   def edit
     @category = Category.find(params[:id])
+    @todo = @category.todos.build
   end
 
   def update
