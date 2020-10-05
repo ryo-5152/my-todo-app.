@@ -2,13 +2,13 @@ class CategoriesController < ApplicationController
   def index
     @category = Category.new
     @categories = Category.all
-    @todo = @category.todos.build
+    
   end
   
   def show
-  
     
     @category = Category.find(params[:id])
+    
     @todo = @category.todos.build
     @todos = @category.todos.all
     
@@ -43,6 +43,10 @@ class CategoriesController < ApplicationController
   private
     def category_params
       params.require(:category).permit(:title)
+    end
+    
+    def category_params2
+      params.permit(:id)
     end
 end
 

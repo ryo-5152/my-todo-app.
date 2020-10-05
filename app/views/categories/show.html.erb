@@ -1,11 +1,11 @@
 
 <h1>新規todo</h1>
-<%= form_for(@todo) do |f| %>
-<%= hidden_field_tag :category_id, @category.id %>
-  <div><%= f.label :content %></div>
-  <div><%= f.text_field :content %></div>
-  <div><%= f.submit %></div>
-<% end %>
+    <%= form_for [@category, @todo] do |f| %>
+      <div>
+        <%= f.text_area :content %>
+      </div>
+        <%= f.submit :送信 %>
+    <% end %>
 
 <table>
   <thead>
@@ -14,11 +14,11 @@
     </tr>
   </thead>
   <tbody>
-    <% @category.todos.each do |todo| %>
+    <% @todos.each do |todo| %>
       <tr>
         <td><%= todo.content %></td>
-        
-        <td><%= link_to "削除", todo, method: :delete %></td>
+        <td><%= link_to "編集", edit_category_todo_path(@category.id,todo.id) %></td>
+        <td><%= link_to "削除", category_todo_path(@category.id,todo.id), method: :delete %></td>
       </tr>
     <% end %>
   </tbody>
