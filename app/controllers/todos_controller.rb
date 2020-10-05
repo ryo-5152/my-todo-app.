@@ -14,20 +14,20 @@ class TodosController < ApplicationController
     end
    
    def edit
-      @category = Category.find_by(params[:category_id])
-      @todo =@category.todos.find_by(params[:id])
+      @category = Category.find_by(id: params[:category_id])
+      @todo =@category.todos.find_by(params.dig(:todo,:id))
    end
    
    def update
-      @category = Category.find_by(params[:category_id])
-      @todo =@category.todos.find_by(params[:id])
+      @category = Category.find_by(id: params[:category_id])
+      @todo =@category.todos.find_by(params.dig(:todo,:id))
        @todo.update(todos_params)
        redirect_to @category
    end
    
    def destroy
-      @category = Category.find_by(params[:id])
-      @todo =@category.todos.find_by(params[:id])
+      @category = Category.find_by(id: params[:category_id])
+      @todo =@category.todos.find_by(params.dig(:todo,:id))
       
        @todo.destroy
        redirect_to @category
@@ -36,7 +36,7 @@ class TodosController < ApplicationController
    private
 
     def todos_params
-      params.require(:todo).permit(:content)
+      params.require(:todo).permit(:content,:id)
     end
     
     
