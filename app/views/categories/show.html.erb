@@ -1,11 +1,5 @@
 
-<h1>新規todo</h1>
-    <%= form_for [@category, @todo] do |f| %>
-      <div>
-        <%= f.text_area :content %>
-      </div>
-        <%= f.submit :送信 %>
-    <% end %>
+
 
 <table>
   <thead>
@@ -17,8 +11,7 @@
     <% @todos.each do |todo| %>
       <tr>
         <td><%= todo.content %></td>
-        <td><%= link_to "編集", edit_category_todo_path(@category.id,todo.id) %></td>
-        <td><%= link_to "削除", category_todo_path(@category.id,todo.id), method: :delete %></td>
+
       </tr>
     <% end %>
   </tbody>

@@ -1,9 +1,21 @@
-<h1>新規カテゴリ</h1>
-<%= form_for(@category) do |f| %>
-  <div><%= f.label :title %></div>
-  <div><%= f.text_field :title %></div>
-  <div><%= f.submit %></div>
+<%= form_for @category do |f| %>
+      <h1>カテゴリ</h1>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  
+      <%= f.fields_for :todos, @category.todos.build do |td| %>
+      <h1>todo</h1>
+        <div>
+          <%= td.label :content %>
+          <%= td.text_field :content %>
+        </div>
+ 
+      <% end %>
+  
+  <%= f.submit "Submit" %>
 <% end %>
+
+
 
 
 <h1>カテゴリ一覧</h1>
@@ -17,9 +29,11 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= link_to(category.title, category_path(category.id)) %></td>
-        <td><%= link_to '編集', edit_category_path(category) %></td>
+        <td><%= link_to '編集', edit_category_path(category,@category.todos) %></td>
         <td><%= link_to '削除', category_path(category), method: :delete %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+

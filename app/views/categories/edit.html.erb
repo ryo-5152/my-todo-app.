@@ -1,8 +1,19 @@
-
-<h1>カテゴリ編集</h1>
-<%= form_for(@category) do |f| %>
-  <div><%= f.label :title %></div>
-  <div><%= f.text_field :title %></div>
-  <div><%= f.submit %></div>
+<%= form_for @category do |f| %>
+      <h1>カテゴリ編集</h1>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.check_box :_destroy %>
+  
+      <%= f.fields_for :todos, @category.todos.build do |td| %>
+      <h1>todo編集</h1>
+        <div>
+          <%= td.label :content %>
+          <%= td.text_field :content %>
+          <%= td.check_box :_destroy %>
+        </div>
+ 
+      <% end %>
+  
+  <%= f.submit "Submit" %>
 <% end %>
 <%= link_to '戻る', categories_path %>
