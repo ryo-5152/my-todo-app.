@@ -2,9 +2,9 @@
       <h1>カテゴリ編集</h1>
   <%= f.label :title %>
   <%= f.text_field :title %>
-  <%= f.check_box :_destroy %>
+
   
-      <%= f.fields_for :todos, @category.todos.build do |td| %>
+      <%= f.fields_for :todos do |td| %>
       <h1>todo編集</h1>
         <div>
           <%= td.label :content %>

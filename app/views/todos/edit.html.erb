@@ -1,9 +1,0 @@
-
-<h1>todo編集</h1>
-    <%= form_for [@category, @todo] do |f| %>
-      <div>
-        <%= f.text_area :content %>
-      </div>
-        <%= f.submit :送信 %>
-    <% end %>
-<%= link_to '戻る', category_path(@category,@todo) %>
