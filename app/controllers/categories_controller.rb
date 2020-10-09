@@ -9,7 +9,6 @@ class CategoriesController < ApplicationController
   def show
     
     @category = Category.find(params[:id])
-    
     @todo =@category.todos.find_by(params[:id])
     @todos = @category.todos.all
     
